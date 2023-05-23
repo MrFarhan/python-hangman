@@ -65,29 +65,33 @@ class HangMan(object):
         print(self.infStr[3:])
             
     def start(self):
-        print('Welcome to Hangman !')
+        print('Welcome to Hangman!')
+        print('-----------------------------------')
+        print('PAF KIET PYTHON ASSIGNMENT')
+        print('Created by Mr Farhan, Muhammad Owais, and Muhammad Aijaz')
+        print('-----------------------------------')
         word = list(self.pickWord())
         result = list('*' * len(word))
-        print('The word is: ', result)
+        print('The word is:', result)
         success, i, missed = False, 0, []
         while i < len(self.pics)-1:
-            print('Guess the word: ', end='')
-            guess,right = self.askAndEvaluate(word, result, missed)
+            print('Guess the word:', end='')
+            guess, right = self.askAndEvaluate(word, result, missed)
             if guess == None:
                 print('Wrong guess, try again.')
                 continue
             print(''.join(result))
             if result == word:
-                self.info('Congratulations ! You\'ve just saved a life !')
+                self.info('Congratulations! You\'ve just saved a life!')
                 success = True
                 break
             if not right:
                 missed.append(guess)
                 i+=1
             self.printPic(i, len(word))
-            print('Missed characters: ', missed)
+            print('Missed characters:', missed)
         
         if not success:
-            self.info('The word was \''+''.join(word)+'\' ! You\'ve just killed a man, yo !')
+            self.info('The word was \'' + ''.join(word) + '\'! You\'ve just killed a man, yo!')
 
 a = HangMan().start()
